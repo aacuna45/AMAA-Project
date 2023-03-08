@@ -1,0 +1,36 @@
+Class Reminder 
+
+String name  
+String discription
+date: int month, int day, int year
+Boolean completion
+
+
+
+
+GetReminder: Searches for reminder from storage
+
+CreateReminder: Creates user filled reminder / stores and reloads reminders
+
+DeleteReminder: Deletes reminder from storage / reloads reminders
+
+StoreReminder: Stores reminder to storage
+
+LoadReminders: Loads reminders from storage 
+
+FlushReminders: Deletes all reminders from storage / reloads
+
+SortReminders: Sorts reminders by date 
+
+ResolveReminder: User determines if they completed the task 
+
+GenerateQuote: Grabs quote from quote file 
+
+DetermineQuote: Calculates completion percentage to select quote category 
+
+ ------------------------------------------------------------- 
+Program Process: 
+
+1. Startup -> LoadReminders
+
+2. User Choice -> Create/Delete/Store/Flush 
