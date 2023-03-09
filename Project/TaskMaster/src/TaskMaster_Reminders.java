@@ -74,7 +74,12 @@ public class TaskMaster_Reminders {
      * Calculates completion percentage to select quote category
      * @TODO FINISH
      */
-    public int DeterminQuote(){
+    public int DetermineQuote(){
         return 0;
+    }
+
+    @Override
+    public String toString(){
+        return "Reminder: " + name + discription + "due at: " + date;
     }
 } //end class
