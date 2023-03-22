@@ -1,4 +1,4 @@
-package Project.TaskMaster.src;
+package Project.TaskMaster.src.amaa_team.TaskMaster.demo.src.main;
 
 import java.util.Scanner;
 
@@ -12,7 +12,7 @@ public class TaskMaster_Main{
     
 
     public static void WelcomeScreen(){
-        System.out.println("\t\t*****\tWelcome To TaskMaster\t" + user + "!*****\n\n");
+        System.out.println("\n\t\t*****\tWelcome To TaskMaster\t" + user + "!*****\n\n");
         userOptions();
     } //end WelcomeScreen
     
