@@ -1,4 +1,4 @@
-package Project.TaskMaster.src.amaa_team.TaskMaster.demo.src.main;
+package Project.TaskMaster.src;
 
 public class TaskMaster_Reminders {
     public String name;

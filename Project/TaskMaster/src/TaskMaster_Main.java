@@ -1,4 +1,4 @@
-package Project.TaskMaster.src.amaa_team.TaskMaster.demo.src.main;
+package Project.TaskMaster.src;
 
 import java.util.Scanner;
 
