@@ -58,7 +58,7 @@ public class TaskMaster_Reminders {
      * User determines if they completed the task
      * @TODO FINISH
      */
-    public void ResolveReminders(){
+    public void resolveReminders(){
 
     }
 
@@ -74,7 +74,7 @@ public class TaskMaster_Reminders {
      * Calculates completion percentage to select quote category
      * @TODO FINISH
      */
-    public int DetermineQuote(){
+    public int determineQuote(){
         return 0;
     }
 
