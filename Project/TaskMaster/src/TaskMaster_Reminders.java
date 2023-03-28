@@ -80,6 +80,6 @@ public class TaskMaster_Reminders {
 
     @Override
     public String toString(){
-        return "Reminder: " + name + discription + "due at: " + date;
+        return "Reminder: " + this.name + "\n\t" + this.discription + "\n\tdue at: " + this.date;
     }
 } //end class
