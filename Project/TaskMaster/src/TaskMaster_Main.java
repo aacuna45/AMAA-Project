@@ -7,7 +7,6 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class TaskMaster_Main extends Application{
@@ -22,12 +21,15 @@ public class TaskMaster_Main extends Application{
 
     @Override
     public void start(Stage stage) throws Exception{
+        String cssFile = this.getClass().getResource("TaskMaster_Styles.css").toExternalForm();
+
         Parent root = FXMLLoader.load(getClass().getResource("TaskMaster_Main.fxml"));
-        Scene scene = new Scene(root, Color.DARKGREY);
+        Scene scene = new Scene(root);
         Image icon = new Image("Project/TaskMaster/src/TaskMaster_icon_trial.png");
         
         stage.setTitle("TaskMaster");
         stage.getIcons().add(icon);
+        scene.getStylesheets().add(cssFile);
         stage.setScene(scene);
         stage.show();
     }
