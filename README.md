@@ -1,6 +1,6 @@
 # AMAA Project
- CS371 Productivity App 
- <br> Project Page: <br>
+ CS371 Productivity App<br>
+ <br>Project Page: <br>
  https://alenrtan.github.io/amaa-team.github.io/ <br>
 
 
