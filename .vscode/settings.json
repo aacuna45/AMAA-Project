@@ -9,6 +9,7 @@
         "c:\\OpenFX\\javafx-sdk-17.0.6\\lib\\javafx.swing.jar",
         "c:\\OpenFX\\javafx-sdk-17.0.6\\lib\\javafx.web.jar",
         "c:\\OpenFX\\javafx-sdk-17.0.6\\lib\\javafx-swt.jar",
+        "c:\\javafx-sdk-17.0.6\\lib\\javafx-swt.jar",
         "Project/TaskMaster/lib/opencsv-3.8.jar"
     ]
 }

@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Scene_TaskMaster_Main",
+            "request": "launch",
+            "mainClass": "Project.TaskMaster.src.Scene_TaskMaster_Main",
+            "projectName": "AMAA-Project_d65a0aa6"
+        },
+        {
+            "type": "java",
             "name": "TaskMaster_Main",
             "request": "launch",
             "mainClass": "Project.TaskMaster.src.TaskMaster_Main",

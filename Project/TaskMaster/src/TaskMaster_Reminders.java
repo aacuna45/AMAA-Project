@@ -16,27 +16,30 @@ import com.opencsv.CSVWriter;
 
 
 public class TaskMaster_Reminders {
-    public String name;
-    public String discription;
-    public String date; //TODO:Change to Date and Calendar class later
-    public int month;
-    public int day;
-    public int year;
+    private String name;
+    private String description;
+    private String date; 
+    private int month;
+    private int day;
+    private int year;
+
+    //A global TaskMaster_Reminders List object for storage purposes
+    private static List<TaskMaster_Reminders> reminderHolder = new ArrayList<TaskMaster_Reminders>();
 
     /* constructors to create a new reminder*/
-    public TaskMaster_Reminders(String name, String discription, int month, int day, int year){
+    public TaskMaster_Reminders(String name, String description, int month, int day, int year){
         this.name = name;
-        this.discription = discription;
+        this.description = description;
         this.month = month;
         this.day = day; 
         this.year = year; 
-        
     }
 
-    public TaskMaster_Reminders(String name, String discription, String date){
+    public TaskMaster_Reminders(String name, String description, String date){
         this.name = name;
-        this.discription = discription;
+        this.description = description;
         this.date = date;
+
     }
 
     /* BEGIN CLASS METHODS */
@@ -53,12 +56,18 @@ public class TaskMaster_Reminders {
      * Creates user filled reminder / stores and reloads reminders
      * @TODO FINISH
      */
-    public void CreateReminder(){
+    public static void CreateReminder(TaskMaster_Reminders inputtedReminder){
+        if (reminderHolder.isEmpty()){
+            System.out.println("EMPTY");
+        }
 
+        reminderHolder.add(inputtedReminder);
+        StoreReminders(reminderHolder);
+        System.out.println("DONE INPUTTING");
     }
 
 
-    public void DeleteReminder(){
+    public static void DeleteReminder(){
 
     }
 
@@ -66,7 +75,7 @@ public class TaskMaster_Reminders {
      * Deletes all reminders from storage / reloads
      * @TODO FINISH
      */
-    public void FlushReminders(){
+    public static void FlushReminders(){
 
     }
 
@@ -74,7 +83,7 @@ public class TaskMaster_Reminders {
      * Sorts reminders by date 
      * @TODO FINISH
      */
-    public void SortReminders(){
+    public static void SortReminders(){
 
     }
 
@@ -82,7 +91,7 @@ public class TaskMaster_Reminders {
      * User determines if they completed the task
      * @TODO FINISH
      */
-    public void resolveReminders(){
+    public static void resolveReminders(){
 
     }
 
@@ -90,7 +99,7 @@ public class TaskMaster_Reminders {
      * Grabs quote from quote file 
      * @TODO FINISH
      */
-    public String generateQuote(){
+    public static String generateQuote(){
         return "ADD QUOTES";
     }
 
@@ -98,18 +107,18 @@ public class TaskMaster_Reminders {
      * Calculates completion percentage to select quote category
      * @TODO FINISH
      */
-    public int determineQuote(){
+    public static int determineQuote(){
         return 0;
     }
 
 
     public String toString2(){
-        return "Reminder: " + this.name + "\n\t" + this.discription + "\n\tdue at: " + this.month + "/" + this.day + "/"+ this.year+ "\n";
+        return "Reminder: " + this.name + "\n\t" + this.description + "\n\tdue at: " + this.month + "/" + this.day + "/"+ this.year+ "\n";
     }
 
     @Override
     public String toString(){
-        return "Reminder: " + this.name + "\n\t" + this.discription + "\n\tdue at: " + this.date;
+        return "Reminder: " + this.name + "\n\t" + this.description + "\n\tdue at: " + this.date;
     }
 
     /*TODO: probably need a reminder list class if load/store 
@@ -123,6 +132,7 @@ public class TaskMaster_Reminders {
         //trys to create and write csv file 
         try{
             //temp variables for reminder buffer
+            System.out.println("CREATING A NEW CSV FILE...");
             TaskMaster_Reminders temp ; 
             List<String[]> rem_data = new ArrayList<String[]>();
 
@@ -130,7 +140,14 @@ public class TaskMaster_Reminders {
             File file = new File("./reminder.csv") ;
 
             //creates csv writer 
-            FileWriter outputfile = new FileWriter(file);
+            FileWriter outputfile;
+
+            if(file.exists()){
+                outputfile = new FileWriter(file, true);
+            }else{
+                outputfile = new FileWriter(file);
+            }
+            
             CSVWriter writer = new CSVWriter(outputfile);
             
             //loads each reminder in list 
@@ -140,7 +157,7 @@ public class TaskMaster_Reminders {
                 temp = loaded_Rem.get(i); 
 
                 //converts reminder into string array and adds to reminder buffer
-                String[] curr_remData = {temp.name, temp.discription, Integer.toString(temp.month),Integer.toString(temp.day),Integer.toString(temp.year) }; 
+                String[] curr_remData = {temp.name, temp.description, temp.date}; 
                 rem_data.add(curr_remData);
             }
             //writes buffer to file in csv format 
@@ -178,7 +195,7 @@ public class TaskMaster_Reminders {
             while ((curr_rem = csvReader.readNext()) != null) {
 
                 //creates reminder from csv row
-                TaskMaster_Reminders curr_load = new TaskMaster_Reminders(curr_rem[0], curr_rem[1], Integer.parseInt(curr_rem[2]), Integer.parseInt(curr_rem[3]), Integer.parseInt(curr_rem[4]));
+                TaskMaster_Reminders curr_load = new TaskMaster_Reminders(curr_rem[0], curr_rem[1], curr_rem[2]);
                 
                 //adds reminder to return list
                 loaded_Rem.add(curr_load);
