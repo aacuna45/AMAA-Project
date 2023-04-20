@@ -24,7 +24,7 @@ public class TaskMaster_Reminders {
     private int year;
 
     //A global TaskMaster_Reminders List object for storage purposes
-    private static List<TaskMaster_Reminders> reminderHolder = new ArrayList<TaskMaster_Reminders>();
+    public static List<TaskMaster_Reminders> reminderHolder = new ArrayList<TaskMaster_Reminders>();
 
     /* constructors to create a new reminder*/
     public TaskMaster_Reminders(String name, String description, int month, int day, int year){
@@ -62,7 +62,6 @@ public class TaskMaster_Reminders {
         }
 
         reminderHolder.add(inputtedReminder);
-        StoreReminders(reminderHolder);
         System.out.println("DONE INPUTTING");
     }
 
@@ -121,8 +120,7 @@ public class TaskMaster_Reminders {
         return "Reminder: " + this.name + "\n\t" + this.description + "\n\tdue at: " + this.date;
     }
 
-    /*TODO: probably need a reminder list class if load/store 
-        function cant be used in main function*/
+    
 
     /**
      * Stores loaded reminders list to save file 
@@ -132,7 +130,6 @@ public class TaskMaster_Reminders {
         //trys to create and write csv file 
         try{
             //temp variables for reminder buffer
-            System.out.println("CREATING A NEW CSV FILE...");
             TaskMaster_Reminders temp ; 
             List<String[]> rem_data = new ArrayList<String[]>();
 
@@ -141,14 +138,19 @@ public class TaskMaster_Reminders {
 
             //creates csv writer 
             FileWriter outputfile;
-
+            CSVWriter writer;
+            
             if(file.exists()){
                 outputfile = new FileWriter(file, true);
+                writer = new CSVWriter(outputfile);
             }else{
+                System.out.println("CREATING A NEW CSV FILE...");
                 outputfile = new FileWriter(file);
+                writer = new CSVWriter(outputfile);
+                String[] headerData = {"Reminder Title", "Reminder Desctiption", "Reminder Date"};
+                writer.writeNext(headerData, false);;
             }
             
-            CSVWriter writer = new CSVWriter(outputfile);
             
             //loads each reminder in list 
             for (int i = 0; i < loaded_Rem.size(); i++){

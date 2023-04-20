@@ -70,6 +70,7 @@ public class Controller {
     }
 
     public void close(ActionEvent event) throws IOException{
+        System.out.println("CLOSING PROGRAM...");
         System.exit(0);
     }
 
