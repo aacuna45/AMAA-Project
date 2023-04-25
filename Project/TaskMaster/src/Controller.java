@@ -5,6 +5,7 @@
 package Project.TaskMaster.src;
 
 import java.io.IOException;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,19 +14,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class Controller {
+public class Controller{
 
-    @FXML
-    private TextField reminderTitle;
-    @FXML
-    private TextField reminderDate;
-    @FXML
-    private TextField reminderDescription;
-    @FXML
-    private Label reminderConfirm;
+    @FXML private TextField reminderTitle;
+    @FXML private TextField reminderDate;
+    @FXML private TextField reminderDescription;
+    @FXML private Label reminderConfirm;
     
     private String title;
     private String description;
@@ -34,13 +32,21 @@ public class Controller {
     private Scene scene;
     private Parent root;
 
+
+
     public void showAll(ActionEvent event) throws IOException{
         System.out.println("Showing all reminders...");
         root = FXMLLoader.load(getClass().getResource("Scene_ShowAll.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
+        
+        List<TaskMaster_Reminders> loadReminders = TaskMaster_Reminders.LoadReminders();
+        for(int i = 1; i < loadReminders.size(); i++){
+            System.out.println(loadReminders.get(i).toString());
+        }
     }
 
     public void create(ActionEvent event) throws IOException{
@@ -48,6 +54,7 @@ public class Controller {
         root = FXMLLoader.load(getClass().getResource("Scene_CreateReminder.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
@@ -57,6 +64,7 @@ public class Controller {
         root = FXMLLoader.load(getClass().getResource("Scene_TBD.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
@@ -65,6 +73,7 @@ public class Controller {
         root = FXMLLoader.load(getClass().getResource("Scene_TaskMaster_Main.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
@@ -88,4 +97,6 @@ public class Controller {
         reminderConfirm.setText("Reminder Created!");
         //TODO: Add checks to make sure the user is not leaving anything blank
     }
+
+    
 }
