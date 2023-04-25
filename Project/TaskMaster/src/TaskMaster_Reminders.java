@@ -32,10 +32,10 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
     public static List<TaskMaster_Reminders> reminderHolder = new ArrayList<TaskMaster_Reminders>();
 
     /*LocalDate Constuctor*/
-    public TaskMaster_Reminders(String name, String description, int month, int day, int year){
+    public TaskMaster_Reminders(String name, String description, LocalDate date){
         this.name = name;
         this.description = description;
-        this.Date = LocalDate.of(year, month, day);  
+        this.Date = date;  
     }
 
     //String date Contuctor 
@@ -43,7 +43,6 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
         this.name = name;
         this.description = description;
         this.date = date;
-
     }
 
     /* BEGIN CLASS METHODS */
@@ -104,7 +103,7 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
 
     /*
      * User determines if they completed the task
-     * @TODO FINISH
+     * TODO FINISH
      */
     public static void resolveReminders(){
 
@@ -125,19 +124,6 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
     public static int determineQuote(){
         return 0;
     }
-
-    //toString function using LocalDate
-    public String toStringLocalDate(){
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return "Reminder: " + this.name + "\n\t" + this.description + "\n\tdue at: " + Date.format(format);
-    }
-
-    @Override
-    public String toString(){
-        return "Reminder: " + this.name + "\n\t" + this.description + "\n\tdue at: " + this.date;
-    }
-
-    
 
     /**
      * Stores loaded reminders list to save file 
@@ -164,7 +150,7 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
                 System.out.println("CREATING A NEW CSV FILE...");
                 outputfile = new FileWriter(file);
                 writer = new CSVWriter(outputfile);
-                String[] headerData = {"Reminder Title", "Reminder Desctiption", "Reminder Date"};
+                String[] headerData = {"Reminder Title", "Reminder Description", "Reminder Date"};
                 writer.writeNext(headerData, false);;
             }
             
@@ -176,7 +162,7 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
                 temp = loaded_Rem.get(i); 
 
                 //converts reminder into string array and adds to reminder buffer
-                String[] curr_remData = {temp.name, temp.description, temp.date}; 
+                String[] curr_remData = {temp.name, temp.description, temp.Date.toString()}; 
                 rem_data.add(curr_remData);
             }
             //writes buffer to file in csv format 
@@ -235,8 +221,15 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
         return this.Date.compareTo(o.Date);
     }
 
+    //toString function using LocalDate
+    public String toStringLocalDate(){
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return "Reminder: " + this.name + "\nDescription: " + this.description + "\tDue at: " + Date.format(format);
+    }
 
-
-    
+    @Override
+    public String toString(){
+        return "Reminder: " + this.name + "\tDescription: " + this.description + "\tDue at: " + this.date;
+    }
 
 } //end class

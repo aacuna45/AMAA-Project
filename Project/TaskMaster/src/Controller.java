@@ -5,6 +5,8 @@
 package Project.TaskMaster.src;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javafx.event.ActionEvent;
@@ -13,15 +15,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class Controller{
 
     @FXML private TextField reminderTitle;
-    @FXML private TextField reminderDate;
+    @FXML private DatePicker reminderDate;
     @FXML private TextField reminderDescription;
     @FXML private Label reminderConfirm;
     
@@ -44,6 +46,7 @@ public class Controller{
         stage.show();
         
         List<TaskMaster_Reminders> loadReminders = TaskMaster_Reminders.LoadReminders();
+        
         for(int i = 1; i < loadReminders.size(); i++){
             System.out.println(loadReminders.get(i).toString());
         }
@@ -86,14 +89,17 @@ public class Controller{
     public void createSubmit(ActionEvent event){
         title = reminderTitle.getText();
         description = reminderDescription.getText();
-        date = reminderDate.getText();
 
-        TaskMaster_Reminders newReminder = new TaskMaster_Reminders(title, description, date);
+        LocalDate inputDate = reminderDate.getValue();
+
+        TaskMaster_Reminders newReminder = new TaskMaster_Reminders(title, description, inputDate);
         TaskMaster_Reminders.CreateReminder(newReminder);
         
         reminderTitle.clear();
         reminderDescription.clear();
-        reminderDate.clear();
+        reminderDate.setValue(null);
+        reminderDate.setPromptText("Reminder Date");
+        
         reminderConfirm.setText("Reminder Created!");
         //TODO: Add checks to make sure the user is not leaving anything blank
     }
