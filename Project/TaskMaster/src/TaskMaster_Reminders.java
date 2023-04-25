@@ -110,18 +110,6 @@ public class TaskMaster_Reminders {
         return 0;
     }
 
-
-    public String toString2(){
-        return "Reminder: " + this.name + "\n\t" + this.description + "\n\tdue at: " + this.month + "/" + this.day + "/"+ this.year+ "\n";
-    }
-
-    @Override
-    public String toString(){
-        return "Reminder: " + this.name + "\n\t" + this.description + "\n\tdue at: " + this.date;
-    }
-
-    
-
     /**
      * Stores loaded reminders list to save file 
      * @param loaded_Rem Loaded Reminder List 
@@ -213,6 +201,17 @@ public class TaskMaster_Reminders {
         catch (IOException e) {e.printStackTrace(); return null;}
     } 
 
+    
 
+    public String toString2(){
+        return "Reminder: " + this.name + "\n\t" + this.description + "\n\tdue at: " + this.month + "/" + this.day + "/"+ this.year+ "\n";
+    }
+
+    @Override
+    public String toString(){
+        return "Reminder: " + this.name + "\tDescription: " + this.description + "\tdue at: " + this.date;
+    }
+
+    
 
 } //end class

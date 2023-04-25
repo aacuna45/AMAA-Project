@@ -1,5 +1,7 @@
 package Project.TaskMaster.src;
 
+
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +29,10 @@ public class TaskMaster_Main extends Application{
         stage.getIcons().add(icon);
         scene.getStylesheets().add(cssFile);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
+        
+
         
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
@@ -36,5 +41,6 @@ public class TaskMaster_Main extends Application{
                 TaskMaster_Reminders.StoreReminders(TaskMaster_Reminders.reminderHolder);
             }
         });
+
     }
 }

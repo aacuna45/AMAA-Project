@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #54b09c;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.TaskMaster.src.Controller">
+<BorderPane minHeight="400.0" minWidth="600.0" style="-fx-background-color: #54b09c;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.TaskMaster.src.Controller">
    <center>
       <ImageView fitHeight="170.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
@@ -45,11 +45,11 @@
       </AnchorPane>
    </top>
    <bottom>
-      <AnchorPane prefHeight="54.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="68.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="274.0" layoutY="15.0" mnemonicParsing="false" onAction="#create" text="Create" />
-            <Button layoutX="495.0" layoutY="15.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
-            <Button layoutX="45.0" layoutY="15.0" mnemonicParsing="false" onAction="#showAll" text="Show All" />
+            <Button layoutX="274.0" layoutY="15.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#create" text="Create" />
+            <Button layoutX="495.0" layoutY="15.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#delete" text="Delete" />
+            <Button layoutX="45.0" layoutY="15.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showAll" text="Show All" />
          </children>
       </AnchorPane>
    </bottom>
