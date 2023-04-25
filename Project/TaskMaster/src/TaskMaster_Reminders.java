@@ -2,39 +2,43 @@ package Project.TaskMaster.src;
 
 //Java util libraries
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 //Java io libraries
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+
+//Java time libraries
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 //CSV Parser libraries
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 
 
-public class TaskMaster_Reminders {
+public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
     private String name;
     private String description;
+    private LocalDate Date; 
     private String date; 
-    private int month;
-    private int day;
-    private int year;
 
     //A global TaskMaster_Reminders List object for storage purposes
     public static List<TaskMaster_Reminders> reminderHolder = new ArrayList<TaskMaster_Reminders>();
 
-    /* constructors to create a new reminder*/
+    /*LocalDate Constuctor*/
     public TaskMaster_Reminders(String name, String description, int month, int day, int year){
         this.name = name;
         this.description = description;
-        this.month = month;
-        this.day = day; 
-        this.year = year; 
+        this.Date = LocalDate.of(year, month, day);  
     }
 
+    //String date Contuctor 
     public TaskMaster_Reminders(String name, String description, String date){
         this.name = name;
         this.description = description;
@@ -72,18 +76,30 @@ public class TaskMaster_Reminders {
 
     /*
      * Deletes all reminders from storage / reloads
-     * @TODO FINISH
      */
-    public static void FlushReminders(){
-
+   static public List<TaskMaster_Reminders> FlushReminders(){
+        List<TaskMaster_Reminders> loaded_Rem = new ArrayList<TaskMaster_Reminders>(); 
+        File file = new File("./reminder.csv") ;
+        try {
+            new FileOutputStream(file, false).close();
+            return loaded_Rem; 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        //reloads list 
     }
 
     /*
-     * Sorts reminders by date 
-     * @TODO FINISH
+     * Sorts reminders by date
+     * Uses Collection sort and CompareTo functions to sort reminders in-list by LocalDate value  
      */
-    public static void SortReminders(){
-
+    public static List<TaskMaster_Reminders> SortReminders(List<TaskMaster_Reminders> input){
+        Collections.sort(input);
+        return input; 
     }
 
     /*
@@ -110,9 +126,10 @@ public class TaskMaster_Reminders {
         return 0;
     }
 
-
-    public String toString2(){
-        return "Reminder: " + this.name + "\n\t" + this.description + "\n\tdue at: " + this.month + "/" + this.day + "/"+ this.year+ "\n";
+    //toString function using LocalDate
+    public String toStringLocalDate(){
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return "Reminder: " + this.name + "\n\t" + this.description + "\n\tdue at: " + Date.format(format);
     }
 
     @Override
@@ -212,6 +229,11 @@ public class TaskMaster_Reminders {
         //Throws error if cant read file  
         catch (IOException e) {e.printStackTrace(); return null;}
     } 
+
+    @Override
+    public int compareTo(TaskMaster_Reminders o) {
+        return this.Date.compareTo(o.Date);
+    }
 
 
 
