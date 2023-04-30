@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -24,15 +26,18 @@
                         <Font name="Verdana Bold" size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="reminderTitle" layoutX="14.0" layoutY="101.0" promptText="Reminder Title" />
-                  <TextField fx:id="reminderDescription" alignment="TOP_LEFT" layoutX="14.0" layoutY="224.0" prefHeight="103.0" prefWidth="403.0" promptText="Reminder Description" />
+                  <TextField fx:id="reminderTitle" layoutX="14.0" layoutY="80.0" promptText="Reminder Title">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor></TextField>
                   <Button layoutX="365.0" layoutY="359.0" mnemonicParsing="false" onAction="#createSubmit" text="Create" />
                   <Label fx:id="reminderConfirm" layoutX="14.0" layoutY="344.0" prefHeight="56.0" prefWidth="315.0" text=" ">
                      <font>
                         <Font name="Verdana Bold" size="16.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="reminderDate" layoutX="14.0" layoutY="157.0" prefHeight="26.0" prefWidth="150.0" promptText="Reminder Date" />
+                  <DatePicker fx:id="reminderDate" layoutX="14.0" layoutY="136.0" prefHeight="26.0" prefWidth="150.0" promptText="Reminder Date" />
+                  <TextArea fx:id="reminderDescription" layoutX="14.0" layoutY="188.0" prefHeight="122.0" prefWidth="404.0" promptText="Reminder Description" wrapText="true" />
                </children>
             </AnchorPane>
         </items>
