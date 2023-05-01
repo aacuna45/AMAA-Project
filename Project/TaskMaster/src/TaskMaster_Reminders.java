@@ -21,14 +21,12 @@ import java.time.format.DateTimeFormatter;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 
-import javafx.beans.InvalidationListener;
 
-
-public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders>, javafx.beans.Observable {
+public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
     private String name;
     private String description;
     private LocalDate Date; 
-    private String stringDate; 
+    private String date; 
 
     //A global TaskMaster_Reminders List object for storage purposes
     public static List<TaskMaster_Reminders> reminderHolder = new ArrayList<TaskMaster_Reminders>();
@@ -44,17 +42,10 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders>, j
     public TaskMaster_Reminders(String name, String description, String date){
         this.name = name;
         this.description = description;
-        this.stringDate = date;
+        this.date = date;
     }
 
     /* BEGIN CLASS METHODS */
-
-    /*
-     * Getter methods 
-     */
-    public String getName() { return name; }
-    public String getDescription() { return description; }
-    public LocalDate getDate() { return Date; }
 
     /* 
      * Searches for reminder from storage
@@ -238,19 +229,7 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders>, j
 
     @Override
     public String toString(){
-        return "Reminder: " + this.name + "\tDescription: " + this.description + "\tDue at: " + this.stringDate;
-    }
-
-    @Override
-    public void addListener(InvalidationListener arg0) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addListener'");
-    }
-
-    @Override
-    public void removeListener(InvalidationListener arg0) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeListener'");
+        return "Reminder: " + this.name + "\tDescription: " + this.description + "\tDue at: " + this.date;
     }
 
 } //end class

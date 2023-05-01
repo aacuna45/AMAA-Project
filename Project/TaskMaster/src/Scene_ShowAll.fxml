@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -42,7 +41,7 @@
          <children>
             <SplitPane dividerPositions="0.2508361204013378" layoutY="-15.0" prefHeight="376.0" prefWidth="600.0">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="374.0" prefWidth="98.0" style="-fx-background-color: #54b09c;">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #54b09c;">
                      <children>
                         <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="Back" />
                      </children>
@@ -54,7 +53,6 @@
                               <Font name="Verdana Bold" size="20.0" />
                            </font>
                         </Label>
-                        <ListView fx:id="remindersListView" layoutX="12.0" layoutY="39.0" prefHeight="320.0" prefWidth="422.0" />
                      </children>
                   </AnchorPane>
               </items>
