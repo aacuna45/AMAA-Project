@@ -26,7 +26,7 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
     private String name;
     private String description;
     private LocalDate Date; 
-    private String date; 
+    private String dateString; 
 
     //A global TaskMaster_Reminders List object for storage purposes
     public static List<TaskMaster_Reminders> reminderHolder = new ArrayList<TaskMaster_Reminders>();
@@ -42,10 +42,18 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
     public TaskMaster_Reminders(String name, String description, String date){
         this.name = name;
         this.description = description;
-        this.date = date;
+        this.dateString = date;
     }
 
     /* BEGIN CLASS METHODS */
+
+    /*
+     * getter methods for tableview
+     */
+
+    public String getName(){ return name; }
+    public String getDescription(){ return description; }
+    public String getDate(){ return dateString; }
 
     /* 
      * Searches for reminder from storage
@@ -103,7 +111,7 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
 
     /*
      * User determines if they completed the task
-     * TODO FINISH
+     * 
      */
     public static void resolveReminders(){
 
@@ -224,12 +232,12 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
     //toString function using LocalDate
     public String toStringLocalDate(){
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return "Reminder: " + this.name + "\nDescription: " + this.description + "\tDue at: " + Date.format(format);
+        return "Reminder: " + this.name + "\nDescription: " + this.description + "\tReminder Due at: " + Date.format(format);
     }
 
     @Override
     public String toString(){
-        return "Reminder: " + this.name + "\tDescription: " + this.description + "\tDue at: " + this.date;
+        return "Reminder: " + this.name + "\tDescription: " + this.description + "\tDue at: " + this.dateString;
     }
 
 } //end class
