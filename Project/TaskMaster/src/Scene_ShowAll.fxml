@@ -22,11 +22,6 @@
                     <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                   <items>
                     <MenuItem mnemonicParsing="false" text="About" />
@@ -40,21 +35,21 @@
    <center>
       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="361.0" prefWidth="595.0" BorderPane.alignment="CENTER">
          <children>
-            <SplitPane dividerPositions="0.2508361204013378" layoutY="-15.0" prefHeight="376.0" prefWidth="600.0">
+            <SplitPane dividerPositions="0.15" layoutY="-15.0" prefHeight="376.0" prefWidth="600.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="374.0" prefWidth="98.0" style="-fx-background-color: #54b09c;">
                      <children>
-                        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="Back" />
+                        <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="Back" />
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #54b09c;">
                      <children>
-                        <Label layoutX="6.0" layoutY="5.0" text="Current Reminders">
+                        <Label fx:id="createDeleteReminder" layoutX="6.0" layoutY="5.0" text="Current Reminders">
                            <font>
                               <Font name="Verdana Bold" size="20.0" />
                            </font>
                         </Label>
-                        <VBox fx:id="vbox" layoutX="8.0" layoutY="34.0" prefHeight="334.0" prefWidth="433.0" />
+                        <VBox fx:id="vbox" layoutX="8.0" layoutY="34.0" prefHeight="334.0" prefWidth="487.0" />
                      </children>
                   </AnchorPane>
               </items>

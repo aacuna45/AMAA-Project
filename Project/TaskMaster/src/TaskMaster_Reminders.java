@@ -77,8 +77,16 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
     }
 
 
-    public static void DeleteReminder(){
+    public static void DeleteReminder(TaskMaster_Reminders inputtedReminder){
+        List<TaskMaster_Reminders> deleteHolder = LoadReminders();
 
+        for (int i = 0; i < deleteHolder.size(); i++){
+            if (deleteHolder.get(i).equals(inputtedReminder)){
+                System.out.println("deleting: " + inputtedReminder);
+                break;
+            }
+        }
+        
     }
 
     /*
@@ -86,9 +94,14 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
      */
    static public List<TaskMaster_Reminders> FlushReminders(){
         List<TaskMaster_Reminders> loaded_Rem = new ArrayList<TaskMaster_Reminders>(); 
+        loaded_Rem.add(new TaskMaster_Reminders("Reminder Title", "Reminder Description", "Reminder Date"));
+
         File file = new File("./reminder.csv") ;
         try {
             new FileOutputStream(file, false).close();
+
+            file.delete();
+            
             return loaded_Rem; 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

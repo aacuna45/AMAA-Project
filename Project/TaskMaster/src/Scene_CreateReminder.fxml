@@ -11,11 +11,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #54b09c;" stylesheets="@TaskMaster_Styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.TaskMaster.src.Controller">
    <children>
-      <SplitPane dividerPositions="0.2259358288770053" prefHeight="400.0" prefWidth="600.0">
+      <SplitPane dividerPositions="0.15" prefHeight="400.0" prefWidth="600.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #54b09c;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="98.0" style="-fx-background-color: #54b09c;">
                <children>
-                  <Button layoutX="46.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="Back" />
+                  <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="Back" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #54b09c;">
@@ -25,15 +25,15 @@
                         <Font name="Verdana Bold" size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="reminderTitle" layoutX="14.0" layoutY="101.0" promptText="Reminder Title" />
-                  <Button layoutX="365.0" layoutY="359.0" mnemonicParsing="false" onAction="#createSubmit" text="Create" />
+                  <TextField fx:id="reminderTitle" layoutX="15.0" layoutY="64.0" prefHeight="26.0" prefWidth="170.0" promptText="Reminder Title" />
+                  <Button layoutX="441.0" layoutY="346.0" mnemonicParsing="false" onAction="#createSubmit" text="Create" />
                   <Label fx:id="reminderConfirm" layoutX="14.0" layoutY="344.0" prefHeight="56.0" prefWidth="315.0" text=" ">
                      <font>
                         <Font name="Verdana Bold" size="16.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="reminderDate" layoutX="14.0" layoutY="157.0" prefHeight="26.0" prefWidth="150.0" promptText="Reminder Date" />
-                  <TextArea fx:id="reminderDescription" layoutX="13.0" layoutY="215.0" prefHeight="138.0" prefWidth="403.0" promptText="Reminder Description" />
+                  <DatePicker fx:id="reminderDate" layoutX="15.0" layoutY="120.0" prefHeight="26.0" prefWidth="170.0" promptText="Reminder Date" />
+                  <TextArea fx:id="reminderDescription" layoutX="14.0" layoutY="178.0" prefHeight="138.0" prefWidth="459.0" promptText="Reminder Description" />
                </children>
             </AnchorPane>
         </items>
