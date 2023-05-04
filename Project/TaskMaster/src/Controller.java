@@ -1,10 +1,16 @@
 /*
-* Controller Class for the buttons
+* Controller Class FXML file
 */
 
+// TODO: add documentation to ALL classes of this project
+// TODO: finish deleteReminder() in TaskMaster_Reminders class
+// TODO: final testing and demos
 package Project.TaskMaster.src;
 
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -30,6 +36,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/* 
+ * The following supress is ONLY used to supress the "generic type" warning
+ * when dealing with TableColumn and adding new columns to said table. 
+ */
+@SuppressWarnings("unchecked")
 public class Controller {
 
     @FXML private TextField reminderTitle;
@@ -262,6 +273,15 @@ public class Controller {
     public void deleteAllReminders(ActionEvent event) throws IOException{
         TaskMaster_Reminders.FlushReminders(); //delete the file
         TaskMaster_Reminders.StoreReminders(TaskMaster_Reminders.reminderHolder); //recreate the file with nothing but the header in there!
-        delete(event);
+        delete(event); //reshow the table!
+    }
+
+    @FXML
+    public void about(ActionEvent event){
+        try{
+            Desktop.getDesktop().browse(new URI("https://alenrtan.github.io/amaa-team.github.io/"));
+        }catch (IOException | URISyntaxException e){
+            e.printStackTrace();
+        }
     }
 }
