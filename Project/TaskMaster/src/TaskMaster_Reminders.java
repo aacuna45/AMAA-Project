@@ -4,6 +4,7 @@ package Project.TaskMaster.src;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 //Java io libraries
 import java.io.File;
@@ -12,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.BufferedReader;
 
 //Java time libraries
 import java.time.LocalDate;
@@ -131,20 +133,27 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
     }
 
     /*
-     * Grabs quote from quote file 
+     * Grabs random quote from quote file
+     * Called using TaskMaster_Reminders.generateQuote()
      * @TODO FINISH
      */
     public static String generateQuote(){
-        return "ADD QUOTES";
+        String quote = null;
+        try (BufferedReader br = new BufferedReader(new FileReader("File path//Quotes.txt"))) {
+            int quoteCount = 0;
+            String line;
+            while ((line = br.readLine()) != null) {
+                quoteCount++;
+                if (new Random().nextInt(quoteCount) == 0) {
+                    quote = line;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return quote;
     }
 
-    /*
-     * Calculates completion percentage to select quote category
-     * @TODO FINISH
-     */
-    public static int determineQuote(){
-        return 0;
-    }
 
     /**
      * Stores loaded reminders list to save file 
