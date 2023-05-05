@@ -2,12 +2,10 @@
 * Controller Class FXML file
 */
 
-// TODO: add documentation to ALL classes of this project
-// TODO: finish deleteReminder() in TaskMaster_Reminders class
-// TODO: final testing and demos
 package Project.TaskMaster.src;
 
 import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -136,12 +134,16 @@ public class Controller {
         deleteColumn.setCellFactory(column -> {
             return new TableCell<TaskMaster_Reminders, Void>(){
                 private final Button deleteButton = new Button("Delete");
-
                 {
                     deleteButton.setOnAction(event -> {
                         TaskMaster_Reminders deleteReminder = getTableView().getItems().get(getIndex());
                         TaskMaster_Reminders.DeleteReminder(deleteReminder);
                         deleteConfirmation.setText("Reminder Deleted!");
+                        try {
+                            delete(event);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     });
                 }
 
@@ -236,6 +238,17 @@ public class Controller {
     }
 
     @FXML
+    public void backConfirm(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("Scene_TaskMaster_Main.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+        save();
+    }
+
+    @FXML
     public void close(ActionEvent event) throws IOException{
         System.out.println("CLOSING PROGRAM...");
         System.exit(0);
@@ -283,5 +296,17 @@ public class Controller {
         }catch (IOException | URISyntaxException e){
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void export(ActionEvent event) throws IOException{
+        File csvFile = new File("reminder.csv");
+        Desktop.getDesktop().open(csvFile);
+    }
+
+    @FXML
+    public void save(){
+        TaskMaster_Reminders.StoreReminders(TaskMaster_Reminders.reminderHolder);
+        TaskMaster_Reminders.reminderHolder.clear();
     }
 }

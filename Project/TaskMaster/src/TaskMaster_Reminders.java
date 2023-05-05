@@ -80,15 +80,33 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
 
 
     public static void DeleteReminder(TaskMaster_Reminders inputtedReminder){
+        int index = 0;
         List<TaskMaster_Reminders> deleteHolder = LoadReminders();
 
-        for (int i = 0; i < deleteHolder.size(); i++){
-            if (deleteHolder.get(i).equals(inputtedReminder)){
-                System.out.println("deleting: " + inputtedReminder);
-                break;
+        for (int i = 1; i < deleteHolder.size(); i++){
+            if (deleteHolder.get(i).name.equals(inputtedReminder.name) && deleteHolder.get(i).dateString.equals(inputtedReminder.dateString)){
+                index = i;
             }
         }
-        
+
+        try{
+            File file = new File("./reminder.csv") ;
+            FileReader filereader = new FileReader(file);
+            CSVReader csvReader = new CSVReader(filereader);
+
+            List<String[]> allData = csvReader.readAll();
+            allData.remove(index);
+
+            FileWriter fileToWrite = new FileWriter(file);
+            CSVWriter writer = new CSVWriter(fileToWrite);
+            writer.writeAll(allData);
+
+            csvReader.close();
+            writer.close();
+        }catch(IOException e) {
+            e.printStackTrace(); 
+            return; 
+        }
     }
 
     /*
@@ -124,22 +142,15 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
         return input; 
     }
 
-    /*
-     * User determines if they completed the task
-     * 
-     */
-    public static void resolveReminders(){
-
-    }
 
     /*
      * Grabs random quote from quote file
      * Called using TaskMaster_Reminders.generateQuote()
-     * @TODO FINISH
      */
     public static String generateQuote(){
-        String quote = null;
-        try (BufferedReader br = new BufferedReader(new FileReader("File path//Quotes.txt"))) {
+        String quote = "";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("Project/TaskMaster/src/Quotes.txt"));
             int quoteCount = 0;
             String line;
             while ((line = br.readLine()) != null) {
@@ -148,9 +159,10 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
                     quote = line;
                 }
             }
+            br.close();
         } catch (IOException e) {
-            e.printStackTrace();
-        }
+            System.out.println(e);
+        } 
         return quote;
     }
 
@@ -191,9 +203,16 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
                 //loads current reminder
                 temp = loaded_Rem.get(i); 
 
+                
                 //converts reminder into string array and adds to reminder buffer
-                String[] curr_remData = {temp.name, temp.description, temp.Date.toString()}; 
-                rem_data.add(curr_remData);
+                try{
+                    String[] curr_remData = {temp.name, temp.description, temp.Date.toString()}; 
+                    rem_data.add(curr_remData);
+                } catch (NullPointerException e){
+                    String[] curr_remData = {temp.name, temp.description, temp.dateString};
+                    rem_data.add(curr_remData);
+                }
+                
             }
             //writes buffer to file in csv format 
             writer.writeAll(rem_data,false);

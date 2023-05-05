@@ -15,7 +15,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="98.0" style="-fx-background-color: #54b09c;">
                <children>
-                  <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="Back" />
+                  <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#backConfirm" text="Back" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #54b09c;">
@@ -33,7 +33,7 @@
                      </font>
                   </Label>
                   <DatePicker fx:id="reminderDate" layoutX="15.0" layoutY="120.0" prefHeight="26.0" prefWidth="170.0" promptText="Reminder Date" />
-                  <TextArea fx:id="reminderDescription" layoutX="14.0" layoutY="178.0" prefHeight="138.0" prefWidth="459.0" promptText="Reminder Description" />
+                  <TextArea fx:id="reminderDescription" layoutX="14.0" layoutY="178.0" prefHeight="138.0" prefWidth="478.0" promptText="Reminder Description" />
                </children>
             </AnchorPane>
         </items>

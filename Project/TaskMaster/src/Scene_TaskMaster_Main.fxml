@@ -15,7 +15,7 @@
    <center>
       <ImageView fitHeight="170.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@TaskMaster_icon_trial.png" />
+            <Image url="@TaskMaster_icon.png" />
          </image>
       </ImageView>
    </center>
@@ -27,6 +27,7 @@
                 <Menu mnemonicParsing="false" text="File">
                   <items>
                     <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
+                        <MenuItem mnemonicParsing="false" onAction="#export" text="Export to .csv file" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">

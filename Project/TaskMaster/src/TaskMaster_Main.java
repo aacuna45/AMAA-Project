@@ -23,7 +23,7 @@ public class TaskMaster_Main extends Application{
 
         Parent root = FXMLLoader.load(getClass().getResource("Scene_TaskMaster_Main.fxml"));
         Scene scene = new Scene(root);
-        Image icon = new Image("Project/TaskMaster/src/TaskMaster_icon_trial.png");
+        Image icon = new Image("Project/TaskMaster/src/TaskMaster_icon.png");
         
         stage.setTitle("TaskMaster");
         stage.getIcons().add(icon);
