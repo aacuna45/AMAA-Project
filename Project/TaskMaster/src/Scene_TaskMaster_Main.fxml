@@ -48,9 +48,10 @@
    <bottom>
       <AnchorPane prefHeight="68.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="274.0" layoutY="15.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#create" text="Create" />
-            <Button layoutX="495.0" layoutY="15.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#delete" text="Delete" />
-            <Button layoutX="45.0" layoutY="15.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showAll" text="Show All" />
+            <Button layoutX="197.0" layoutY="15.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#create" text="Create" AnchorPane.leftAnchor="200.0" />
+            <Button layoutX="341.0" layoutY="15.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#delete" text="Delete" AnchorPane.rightAnchor="200.0" />
+            <Button layoutX="46.0" layoutY="15.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showAll" text="Show All" AnchorPane.leftAnchor="50.0" />
+            <Button layoutX="490.0" layoutY="15.0" mnemonicParsing="false" onAction="#quote" text="Quote" AnchorPane.rightAnchor="50.0" />
          </children>
       </AnchorPane>
    </bottom>

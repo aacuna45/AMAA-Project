@@ -46,6 +46,7 @@ public class Controller {
     @FXML private TextArea reminderDescription;
     @FXML private Label reminderConfirm;
     @FXML private Label deleteConfirmation;
+    @FXML private Label quoteGen;
     @FXML private VBox deleteReminderVBox;
 
     // TableView setup
@@ -309,4 +310,20 @@ public class Controller {
         TaskMaster_Reminders.StoreReminders(TaskMaster_Reminders.reminderHolder);
         TaskMaster_Reminders.reminderHolder.clear();
     }
+
+    @FXML
+    public void quote(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("Scene_Quote.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void showNewQuote(){
+        quoteGen.setText(TaskMaster_Reminders.generateQuote());
+    }
+
 }
