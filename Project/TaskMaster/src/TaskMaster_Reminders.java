@@ -146,6 +146,9 @@ public class TaskMaster_Reminders implements Comparable<TaskMaster_Reminders> {
     /*
      * Grabs random quote from quote file
      * Called using TaskMaster_Reminders.generateQuote()
+     * 
+     * .txt file of quotes obtained from:
+     * https://gist.github.com/robatron/a66acc0eed3835119817
      */
     public static String generateQuote(){
         String quote = "";
